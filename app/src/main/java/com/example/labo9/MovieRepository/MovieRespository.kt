@@ -18,8 +18,8 @@ class MovieRespository (private val movieDao:MovieDAO) {
         movieDao.insert(movie)
     }
 
-    fun getMovie(): LiveData<Movie>{
-        return movieDao.getMovie()
+    fun getAllMovie(): LiveData<Movie>{
+        return movieDao.getAllMovie()
     }
 
     @WorkerThread
