@@ -9,7 +9,7 @@ import com.example.labo9.Entity.Movie
 interface MovieDAO {
 
     @Query("select * from movie")
-    fun getAllMovie(): LiveData<Movie>
+    fun getAllMovie(): LiveData<List<Movie>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(movie:Movie)
