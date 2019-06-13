@@ -19,7 +19,7 @@ abstract class MovieDB : RoomDatabase(){
         @Volatile
         private var INSTANCE: MovieDB? = null
 
-        fun getInstance(context: Context, scope: CoroutineScope): MovieDB {
+        fun getInstance(context: Context): MovieDB {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance

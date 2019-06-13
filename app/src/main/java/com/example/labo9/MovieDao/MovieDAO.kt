@@ -8,13 +8,13 @@ import com.example.labo9.Entity.Movie
 
 interface MovieDAO {
 
-    @Query("select * from movie")
-    fun getAllMovie(): LiveData<List<Movie>>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(movie:Movie)
+    suspend fun insertMovie(movie: Movie)
 
-    @Query("delete from movie")
-    suspend fun delete()
+    @Query("select * from Movie")
+    fun loadAllMovies(): LiveData<List<Movie>>
+
+    @Query("select * from Movie where Title like :name")
+    fun searchMovieByName(name: String): LiveData<List<Movie>>
 
 }

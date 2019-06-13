@@ -6,41 +6,34 @@ import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 
 
-@Entity(tableName = "movie")
-class Movie (
-
-    @field:Json(name = "imdbID")
+@Entity
+data class Movie (
     @PrimaryKey
-    var imdbID:String,
+    val imdbID: String = "N/a",
+    val Title:String = "N/A",
+    val Year:String = "N/A",
+    val Released: String = "N/A",
+    val Runtime:String = "N/A",
+    val Genre:String = "N/A",
+    val Director:String = "N/A",
+    val Actors:String = "N/A",
+    val Plot:String = "N/A",
+    val Language:String = "N/A",
+    val imdbRating:String = "N/A",
+    val Poster:String = "N/A"
+)
 
-    @field:Json(name = "Title")
-    @ColumnInfo(name = "title")
-    val Title: String,
+data class MoviePreview(
+    val Title: String = "N/A",
+    val Year: String = "N/A",
+    val imdbID: String = "N/A",
+    val Type: String = "N/A",
+    val Poster: String = "N/A",
+    var selected: Boolean = false
+)
 
-    @field:Json(name = "Year")
-    @ColumnInfo(name = "year")
-    val Year: String,
-
-    @field:Json(name = "Released")
-    @ColumnInfo(name = "released")
-    val Released: String,
-
-    @field:Json(name = "Genre")
-    @ColumnInfo(name = "genre")
-    val Genre: String,
-
-    @field:Json(name = "Director")
-    @ColumnInfo(name = "director")
-    val Director: String,
-
-    @field:Json(name = "Runtime")
-    @ColumnInfo(name = "runtime")
-    val Runtime: String,
-
-    @field:Json(name = "Plot")
-    @ColumnInfo(name = "plot")
-    val Plot: String
-
-
-
+data class OmbdMovieResponse (
+    val Search: List<MoviePreview>,
+    val totalResults: String,
+    val Response: String
 )
